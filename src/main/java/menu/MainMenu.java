@@ -1,7 +1,7 @@
 package menu;
 
 public class MainMenu{
-    MainMenu(){
+    void executeCommand(String command){
 
     }
 }
