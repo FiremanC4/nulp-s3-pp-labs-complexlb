@@ -1,5 +1,5 @@
 package menu;
 
-interface MenuItem {
+public interface MenuItem {
     void execute();
 }
