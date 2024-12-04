@@ -30,7 +30,7 @@ public class Tariff {
         this.sms = sms;
     }
 
-    public Tariff(String name, float monthlyFee, int minutes, int sms, int clientsCount, float internetGB, int minutesAbroad, float discount) {
+    public Tariff(String name, float monthlyFee, int minutes, int sms, int clientsCount, float internetGB) {
         this.name = name;
         this.monthlyFee = monthlyFee;
         this.minutes = minutes;

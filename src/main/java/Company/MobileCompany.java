@@ -25,7 +25,7 @@ public class MobileCompany {
     public String getAllTariffs() {
         String res = "";
         for (int i = 0; i < tariffs.size(); i++) {
-            res += i + ". " + tariffs.get(i) + "\n";
+            res += i+1 + ". " + tariffs.get(i) + "\n";
         }
         return res;
     }
@@ -56,7 +56,7 @@ public class MobileCompany {
     public static void main(String[] args) {
         MobileCompany mobComp = new MobileCompany();
         mobComp.addTariff(new Tariff("a", 12, 50, 20));
-        mobComp.addTariff(new Tariff("b", 46, 50, 20));
+        mobComp.addTariff(new Tariff("b", 46, 5, 20));
         mobComp.addTariff(new Tariff("c", 1, 50, 20));
 
         mobComp.getSortedTariffs();
