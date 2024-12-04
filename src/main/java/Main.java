@@ -1,11 +1,12 @@
 import Company.MobileCompany;
+import Company.Tariff;
 import menu.MenuItem;
 import menu.tariffsmanagement.CreateTariff;
 import menu.tariffsmanagement.DeleteTariff;
-import menu.viewactions.CountUsers;
-import menu.viewactions.SearchTariff;
-import menu.viewactions.ShowTariffs;
-import menu.viewactions.SortTariffs;
+import menu.tariffsview.CountUsers;
+import menu.tariffsview.SearchTariff;
+import menu.tariffsview.ShowTariffs;
+import menu.tariffsview.SortTariffs;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,8 @@ class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         MobileCompany company = new MobileCompany();
+        company.addTariff(new Tariff("Basic", 50, 50, 5));
+        company.addTariff(new Tariff("Business", 400, 3000, 50, 40, 30));
         new Main(scan, company);
     }
 

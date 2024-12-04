@@ -19,10 +19,17 @@ public class MobileCompany {
     }
 
     public boolean addTariff(Tariff tariff) {
+        for(Tariff tariff1: tariffs)
+            if (tariff1.getName().equals(tariff.getName()))
+                return false;
         return tariffs.add(tariff);
     }
 
     public String getAllTariffs() {
+        return getTariffsString(tariffs);
+    }
+
+    public static String getTariffsString(ArrayList<Tariff> tariffs) {
         String res = "";
         for (int i = 0; i < tariffs.size(); i++) {
             res += i+1 + ". " + tariffs.get(i) + "\n";
@@ -39,18 +46,32 @@ public class MobileCompany {
     }
 
     public ArrayList<Tariff> getSortedTariffs() {
-        // Clone the original list to avoid modifying it
         ArrayList<Tariff> sortedTariffs = (ArrayList<Tariff>) tariffs.clone();
-
-        // Sort the cloned list by a specific attribute (e.g., cost)
         sortedTariffs.sort(Comparator.comparingDouble(Tariff::getMonthlyFee));
-
-        // Print the sorted tariffs
-        for (int i = 0; i < sortedTariffs.size(); i++) {
-            System.out.println(i + ". " + sortedTariffs.get(i));
-        }
-
         return sortedTariffs;
+    }
+
+    public ArrayList<Tariff> getFilteredTariffs(
+            float minMonthlyFee, float maxMonthlyFee,
+            int   minMinutes   , int   maxMinutes   ,
+            int   minSms       , int   maxSms       ,
+            float minInternetGB, float maxInternetGB
+            ) {
+        ArrayList<Tariff> filteredTariffs = new ArrayList<Tariff>();
+
+        for (Tariff tariff : tariffs) {
+            if ((minMonthlyFee == -1 || tariff.getMonthlyFee() >= minMonthlyFee) &&
+                    (maxMonthlyFee == -1 || tariff.getMonthlyFee() <= maxMonthlyFee) &&
+                    (minMinutes == -1 || tariff.getMinutes() >= minMinutes) &&
+                    (maxMinutes == -1 || tariff.getMinutes() <= maxMinutes) &&
+                    (minSms == -1 || tariff.getSms() >= minSms) &&
+                    (maxSms == -1 || tariff.getSms() <= maxSms) &&
+                    (minInternetGB == -1 || tariff.getInternetGB() >= minInternetGB) &&
+                    (maxInternetGB == -1 || tariff.getInternetGB() <= maxInternetGB)) {
+                filteredTariffs.add(tariff);
+            }
+        }
+        return filteredTariffs;
     }
 
     public static void main(String[] args) {
