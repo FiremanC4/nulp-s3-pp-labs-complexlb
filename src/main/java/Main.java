@@ -4,7 +4,7 @@ import menu.MenuItem;
 import menu.tariffsmanagement.CreateTariff;
 import menu.tariffsmanagement.DeleteTariff;
 import menu.tariffsview.CountUsers;
-import menu.tariffsview.SearchTariff;
+import menu.tariffsview.FilterTariffs;
 import menu.tariffsview.ShowTariffs;
 import menu.tariffsview.SortTariffs;
 
@@ -27,7 +27,7 @@ class Main {
         MenuMap.put(2, new CreateTariff(scan, company));
         MenuMap.put(3, new DeleteTariff(scan, company));
         MenuMap.put(4, new SortTariffs(scan, company));
-        MenuMap.put(5, new SearchTariff(scan, company));
+        MenuMap.put(5, new FilterTariffs(scan, company));
         MenuMap.put(6, new CountUsers(scan, company));
 
         while (true){

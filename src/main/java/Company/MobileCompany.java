@@ -58,6 +58,14 @@ public class MobileCompany {
             float minInternetGB, float maxInternetGB
             ) {
         ArrayList<Tariff> filteredTariffs = new ArrayList<Tariff>();
+        if (
+             minMonthlyFee == -1 && maxMonthlyFee == -1
+          && minMinutes    == -1 && maxMinutes    == -1
+          && minSms        == -1 && maxSms        == -1
+          && minInternetGB == -1 && maxInternetGB == -1
+            ) {
+            return filteredTariffs;
+        }
 
         for (Tariff tariff : tariffs) {
             if ((minMonthlyFee == -1 || tariff.getMonthlyFee() >= minMonthlyFee) &&
