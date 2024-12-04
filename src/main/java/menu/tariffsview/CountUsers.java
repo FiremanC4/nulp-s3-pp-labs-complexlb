@@ -1,4 +1,4 @@
-package menu.viewactions;
+package menu.tariffsview;
 
 import Company.MobileCompany;
 import menu.MenuItem;
@@ -15,7 +15,8 @@ public class CountUsers implements MenuItem {
 
     @Override
     public void execute() {
-
+        int totalUsers = company.getClientCount();
+        System.out.println("Загальна кількість користувачів усіх тарифів: " + totalUsers);
     }
 
     @Override

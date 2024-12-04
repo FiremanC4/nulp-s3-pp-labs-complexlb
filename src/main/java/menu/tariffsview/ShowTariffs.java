@@ -1,25 +1,25 @@
-package menu.viewactions;
+package menu.tariffsview;
 
 import Company.MobileCompany;
 import menu.MenuItem;
 
 import java.util.Scanner;
 
-public class SortTariffs implements MenuItem {
+public class ShowTariffs implements MenuItem {
     Scanner scan;
     MobileCompany company;
-    public SortTariffs(Scanner scan, MobileCompany company) {
+    public ShowTariffs(Scanner scan, MobileCompany company) {
         this.scan = scan;
         this.company = company;
     }
 
     @Override
     public void execute() {
-        company.getSortedTariffs();
+        System.out.println(company.getAllTariffs());
     }
 
     @Override
     public String getName() {
-        return "Посортувати тарифи";
+        return "Показати всі тарифи";
     }
 }
