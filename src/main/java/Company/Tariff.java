@@ -2,18 +2,17 @@ package Company;
 
 public class Tariff {
     String name;
-    float monthlyFee; // in hrn
+    double monthlyFee; // in hrn
     int minutes;
     int sms;
-    float internetGB = 0;
+    double internetGB = 0;
     int clientsCount = 0;
 
     public String toString(){
         String res = "Тариф: \"" + name
-                   + "\", ціна: " + monthlyFee
-                   + " грн, : " + minutes
-                   + " хв., " + sms
-                   + " смс.";
+                   + "\", ціна: " + monthlyFee + " грн, "
+                   + minutes + " хв., "
+                   + sms + " смс.";
         if (clientsCount != 0) {
             res += ", " + clientsCount + " клієнтів";
         }
@@ -23,14 +22,14 @@ public class Tariff {
         return res;
     }
 
-    public Tariff(String name, float monthlyFee, int minutes, int sms) {
+    public Tariff(String name, double monthlyFee, int minutes, int sms) {
         this.name = name;
         this.monthlyFee = monthlyFee;
         this.minutes = minutes;
         this.sms = sms;
     }
 
-    public Tariff(String name, float monthlyFee, int minutes, int sms, int clientsCount, float internetGB) {
+    public Tariff(String name, double monthlyFee, int minutes, int sms, int clientsCount, double internetGB) {
         this.name = name;
         this.monthlyFee = monthlyFee;
         this.minutes = minutes;
@@ -47,11 +46,11 @@ public class Tariff {
         this.name = name;
     }
 
-    public float getMonthlyFee() {
+    public double getMonthlyFee() {
         return monthlyFee;
     }
 
-    public void setMonthlyFee(float monthlyFee) {
+    public void setMonthlyFee(double monthlyFee) {
         this.monthlyFee = monthlyFee;
     }
 
@@ -79,11 +78,11 @@ public class Tariff {
         this.clientsCount = clientsCount;
     }
 
-    public float getInternetGB() {
+    public double getInternetGB() {
         return internetGB;
     }
 
-    public void setInternetGB(float internetGB) {
+    public void setInternetGB(double internetGB) {
         this.internetGB = internetGB;
     }
 }
