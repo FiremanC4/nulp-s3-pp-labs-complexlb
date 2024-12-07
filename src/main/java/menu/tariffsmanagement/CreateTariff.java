@@ -21,7 +21,7 @@ public class CreateTariff implements MenuItem {
         String name = scan.nextLine();
 
         System.out.println("Місячна плата (грн):");
-        float monthlyFee = Float.parseFloat(scan.nextLine());
+        double monthlyFee = Float.parseFloat(scan.nextLine());
 
         System.out.println("Кількість хвилин:");
         int minutes = Integer.parseInt(scan.nextLine());
@@ -30,7 +30,7 @@ public class CreateTariff implements MenuItem {
         int sms = Integer.parseInt(scan.nextLine());
 
         System.out.println("Кількість ГБ Інтернету (0, якщо немає):");
-        float internetGB = Float.parseFloat(scan.nextLine());
+        int internetGB = Integer.parseInt(scan.nextLine());
 
         System.out.println("Кількість клієнтів (0, якщо немає):");
         int clientsCount = Integer.parseInt(scan.nextLine());
