@@ -61,7 +61,7 @@ public class FilterTariffs implements MenuItem {
                     maxInternetGB = Float.parseFloat(internetRange[1]);
                     break;
                 default:
-                    System.out.println("Невірний номер параметра: " + filter.trim());
+                    System.out.println("Неправильний номер параметра: " + filter.trim());
             }
         }
 

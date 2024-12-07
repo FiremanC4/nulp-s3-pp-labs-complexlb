@@ -82,13 +82,7 @@ public class MobileCompany {
         return filteredTariffs;
     }
 
-    public static void main(String[] args) {
-        MobileCompany mobComp = new MobileCompany();
-        mobComp.addTariff(new Tariff("a", 12, 50, 20));
-        mobComp.addTariff(new Tariff("b", 46, 5, 20));
-        mobComp.addTariff(new Tariff("c", 1, 50, 20));
-
-        mobComp.getSortedTariffs();
+    public ArrayList<Tariff> getTariffs() {
+        return tariffs;
     }
-
 }
