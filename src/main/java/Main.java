@@ -1,5 +1,6 @@
 import Company.MobileCompany;
 import Company.Tariff;
+import menu.CallFatalError;
 import menu.MenuItem;
 import menu.tariffsmanagement.CreateTariff;
 import menu.tariffsmanagement.DeleteTariff;
@@ -7,13 +8,18 @@ import menu.tariffsview.CountUsers;
 import menu.tariffsview.FilterTariffs;
 import menu.tariffsview.ShowTariffs;
 import menu.tariffsview.SortTariffs;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
+        logger.info("Main code startup");
         Scanner scan = new Scanner(System.in);
         MobileCompany company = new MobileCompany();
         company.addTariff(new Tariff("Basic", 50, 50, 5));
@@ -24,13 +30,16 @@ class Main {
     }
 
     public Main(Scanner scan, MobileCompany company) {
-        Map<Integer, MenuItem> MenuMap = new HashMap<>();
+        Map<Integer, MenuItem> MenuMap = new LinkedHashMap<>();
         MenuMap.put(1, new ShowTariffs(scan, company));
         MenuMap.put(2, new CreateTariff(scan, company));
         MenuMap.put(3, new DeleteTariff(scan, company));
         MenuMap.put(4, new SortTariffs(scan, company));
         MenuMap.put(5, new FilterTariffs(scan, company));
         MenuMap.put(6, new CountUsers(scan, company));
+        MenuMap.put(404, new CallFatalError(scan, company));
+
+        logger.info("Menu successfully initialized");
 
         while (true){
             showMenu(MenuMap);
@@ -38,16 +47,24 @@ class Main {
                 int choice = Integer.parseInt(scan.nextLine());
 
                 if (choice == 0) {
+                    logger.info("Exiting the program");
                     break;
                 }
 
                 MenuItem command = MenuMap.get(choice);
                 if (command != null) {
+                    logger.info("Menu item chosen: {}", command.getName());
                     command.execute();
                     continue;
                 }
-            } catch (NumberFormatException _) {}
+            } catch (NumberFormatException e) {
+                logger.debug("Incorrect input error occurred: {}", String.valueOf(e));
+            } catch (Exception e) {
+                logger.fatal(e);
+            }
+            logger.warn("Incorrect input");
             System.out.println("Неправильний формат!");
+
         }
 
     }
