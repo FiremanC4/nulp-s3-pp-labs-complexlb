@@ -32,7 +32,7 @@ public class MobileCompanyTest {
         stringResult = company.getAllTariffs();
 
         assertTrue(booleanResult);
-        assertEquals("1. Тариф: \"b\", ціна: 1.0 грн, 1 хв., 1 смс.\n", stringResult);
+        assertEquals("1. Тариф: \"b\", ціна: 1.00 грн, 1 хв., 1 смс.\n", stringResult);
     }
 
     @Test
@@ -77,7 +77,7 @@ public class MobileCompanyTest {
         stringResult = company.getAllTariffs();
 
         assertTrue(booleanResult);
-        assertEquals("1. Тариф: \"lol\", ціна: 1999999.99 грн, 60 хв., 20 смс., 1 клієнтів, 1.0 ГБ\n", stringResult);
+        assertEquals("1. Тариф: \"lol\", ціна: 1999999.99 грн, 60 хв., 20 смс., 1 клієнтів, 1 ГБ\n", stringResult);
 
     }
 
@@ -97,7 +97,7 @@ public class MobileCompanyTest {
 
         stringResult = company.getAllTariffs();
 
-        assertEquals("1. Тариф: \"a\", ціна: 1.0 грн, 1 хв., 1 смс.\n2. Тариф: \"b\", ціна: 1.0 грн, 1 хв., 1 смс.\n", stringResult);
+        assertEquals("1. Тариф: \"a\", ціна: 1.00 грн, 1 хв., 1 смс.\n2. Тариф: \"b\", ціна: 1.00 грн, 1 хв., 1 смс.\n", stringResult);
 
     }
 
@@ -109,7 +109,7 @@ public class MobileCompanyTest {
 
         stringResult = MobileCompany.getTariffsString(tariffs);
 
-        assertEquals("1. Тариф: \"a\", ціна: 1.0 грн, 1 хв., 1 смс.\n2. Тариф: \"b\", ціна: 1.0 грн, 1 хв., 1 смс.\n", stringResult);
+        assertEquals("1. Тариф: \"a\", ціна: 1.00 грн, 1 хв., 1 смс.\n2. Тариф: \"b\", ціна: 1.00 грн, 1 хв., 1 смс.\n", stringResult);
     }
     @Test
     public void testGetTariffsStringEmpty() {
@@ -141,18 +141,18 @@ public class MobileCompanyTest {
         company = new MobileCompany(tariffs);
 
         stringResult = company.getAllTariffs();
-        assertEquals("1. Тариф: \"a\", ціна: 10.0 грн, 1 хв., 1 смс.\n2. Тариф: \"b\", ціна: 1.0 грн, 1 хв., 1 смс.\n", stringResult);
+        assertEquals("1. Тариф: \"a\", ціна: 10.00 грн, 1 хв., 1 смс.\n2. Тариф: \"b\", ціна: 1.00 грн, 1 хв., 1 смс.\n", stringResult);
 
         stringResult = MobileCompany.getTariffsString(company.getSortedTariffs());
-        assertEquals("1. Тариф: \"b\", ціна: 1.0 грн, 1 хв., 1 смс.\n2. Тариф: \"a\", ціна: 10.0 грн, 1 хв., 1 смс.\n", stringResult);
+        assertEquals("1. Тариф: \"b\", ціна: 1.00 грн, 1 хв., 1 смс.\n2. Тариф: \"a\", ціна: 10.00 грн, 1 хв., 1 смс.\n", stringResult);
     }
 
     @Test
     public void testFilterByMonthlyFee() {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5.0f));
-        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10.0f));
-        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15.0f));
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
         company = new MobileCompany(tariffs);
 
         ArrayList<Tariff> result = company.getFilteredTariffs(15, 25, -1, -1, -1, -1, -1, -1);
@@ -163,9 +163,9 @@ public class MobileCompanyTest {
     @Test
     public void testFilterByMinutes() {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5.0f));
-        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10.0f));
-        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15.0f));
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
         company = new MobileCompany(tariffs);
 
         ArrayList<Tariff> result = company.getFilteredTariffs(-1, -1, 150, 250, -1, -1, -1, -1);
@@ -176,9 +176,9 @@ public class MobileCompanyTest {
     @Test
     public void testFilterBySms() {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5.0f));
-        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10.0f));
-        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15.0f));
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
         company = new MobileCompany(tariffs);
 
         ArrayList<Tariff> result = company.getFilteredTariffs(-1, -1, -1, -1, 75, 125, -1, -1);
@@ -189,12 +189,12 @@ public class MobileCompanyTest {
     @Test
     public void testFilterByInternet() {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5.0f));
-        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10.0f));
-        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15.0f));
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
         company = new MobileCompany(tariffs);
 
-        ArrayList<Tariff> result = company.getFilteredTariffs(-1, -1, -1, -1, -1, -1, 8.0f, 12.0f);
+        ArrayList<Tariff> result = company.getFilteredTariffs(-1, -1, -1, -1, -1, -1, 8, 12);
         assertEquals(1, result.size());
         assertEquals("b", result.get(0).getName());
     }
@@ -202,12 +202,12 @@ public class MobileCompanyTest {
     @Test
     public void testFilterByCombinedParameters() {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5.0f));
-        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10.0f));
-        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15.0f));
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
         company = new MobileCompany(tariffs);
 
-        ArrayList<Tariff> result = company.getFilteredTariffs(10, 30, 100, 300, 50, 150, 5.0f, 15.0f);
+        ArrayList<Tariff> result = company.getFilteredTariffs(10, 30, 100, 300, 50, 150, 5, 15);
         assertEquals(3, result.size());
         assertEquals("a", result.get(0).getName());
         assertEquals("b", result.get(1).getName());
@@ -217,12 +217,23 @@ public class MobileCompanyTest {
     @Test
     public void testFilterNoMatches() {
         ArrayList<Tariff> tariffs = new ArrayList<>();
-        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5.0f));
-        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10.0f));
-        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15.0f));
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
         company = new MobileCompany(tariffs);
 
         ArrayList<Tariff> result = company.getFilteredTariffs(40, 50, -1, -1, -1, -1, -1, -1);
+        assertEquals(0, result.size());
+    }
+    @Test
+    public void testFilterAllNulls() {
+        ArrayList<Tariff> tariffs = new ArrayList<>();
+        tariffs.add(new Tariff("a", 10, 100, 50, 10, 5));
+        tariffs.add(new Tariff("b", 20, 200, 100, 20, 10));
+        tariffs.add(new Tariff("c", 30, 300, 150, 30, 15));
+        company = new MobileCompany(tariffs);
+
+        ArrayList<Tariff> result = company.getFilteredTariffs(-1, -1, -1, -1, -1, -1, -1, -1);
         assertEquals(0, result.size());
     }
 
