@@ -17,7 +17,9 @@ class Main {
         Scanner scan = new Scanner(System.in);
         MobileCompany company = new MobileCompany();
         company.addTariff(new Tariff("Basic", 50, 50, 5));
-        company.addTariff(new Tariff("Business", 400, 3000, 50, 40, 30));
+        company.addTariff(new Tariff("Business", 400, 3000, 500, 40, 50));
+        company.addTariff(new Tariff("Super", 200, 100, 20, 350, 15));
+        company.addTariff(new Tariff("Premium", 300, 500, 300, 100, 30));
         new Main(scan, company);
     }
 
@@ -60,13 +62,6 @@ class Main {
     }
 }
 /*
-2
-Super
-200
-100
-20
-15
-350
 
 2
 Plus
