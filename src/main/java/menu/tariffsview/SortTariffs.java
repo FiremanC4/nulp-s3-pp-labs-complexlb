@@ -16,8 +16,6 @@ public class SortTariffs implements MenuItem {
 
     @Override
     public void execute() {
-        String res = MobileCompany.getTariffsString(company.getSortedTariffs());
-        System.out.println(res);
     }
 
     @Override

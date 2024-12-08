@@ -16,15 +16,7 @@ public class DeleteTariff implements MenuItem {
 
     @Override
     public void execute() {
-        System.out.println("Введіть назву тарифу, який ви хочете видалити:");
-        String name = scan.nextLine();
 
-        // Attempt to delete the tariff
-        if (company.deleteTariff(name)) {
-            System.out.println("Тариф \"" + name + "\" успішно видалено.");
-        } else {
-            System.out.println("Тариф \"" + name + "\" не знайдено.");
-        }
     }
 
 

@@ -15,7 +15,6 @@ public class ShowTariffs implements MenuItem {
 
     @Override
     public void execute() {
-        System.out.println(company.getAllTariffs());
     }
 
     @Override

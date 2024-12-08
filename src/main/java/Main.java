@@ -1,5 +1,4 @@
 import Company.MobileCompany;
-import Company.Tariff;
 import menu.MenuItem;
 import menu.tariffsmanagement.CreateTariff;
 import menu.tariffsmanagement.DeleteTariff;
@@ -16,10 +15,6 @@ class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         MobileCompany company = new MobileCompany();
-        company.addTariff(new Tariff("Basic", 50, 50, 5));
-        company.addTariff(new Tariff("Business", 400, 3000, 500, 40, 50));
-        company.addTariff(new Tariff("Super", 200, 100, 20, 350, 15));
-        company.addTariff(new Tariff("Premium", 300, 500, 300, 100, 30));
         new Main(scan, company);
     }
 
@@ -63,22 +58,3 @@ class Main {
         System.out.print("Виберіть дію: ");
     }
 }
-/*
-
-2
-Plus
-150
-50
-5
-10
-470
-
-2
-Premium
-400
-300
-80
-40
-100
-
-*/
