@@ -10,12 +10,25 @@
         <File name="DebugFile" fileName="logs/debug.log">
             <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n" />
         </File>
+        <Smtp name="EmailLogger"
+              to="${env:SMTP_TO}"
+              from="${env:SMTP_USERNAME}"
+              subject="Critical Error Alert"
+              smtpHost="${env:SMTP_HOST}"
+              smtpPort="${env:SMTP_PORT}"
+              smtpUsername="${env:SMTP_USERNAME}"
+              smtpPassword="${env:SMTP_PASSWORD}"
+              smtpProtocol="smtps">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n" />
+            <ThresholdFilter level="FATAL" onMatch="ACCEPT" onMismatch="DENY" />
+        </Smtp>
     </Appenders>
     <Loggers>
         <Root level="debug">
             <AppenderRef ref="DebugFile" />
             <AppenderRef ref="InfoFile" level="info"/>
             <AppenderRef ref="Console" level="error"/>
+            <AppenderRef ref="EmailLogger" level="fatal"/>
         </Root>
     </Loggers>
 </Configuration>

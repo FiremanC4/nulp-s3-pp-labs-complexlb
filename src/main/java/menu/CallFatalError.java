@@ -17,7 +17,7 @@ public class CallFatalError implements MenuItem {
     }
     @Override
     public void execute() {
-        logger.fatal("Oh no, fatal error occurred. I think it's best time to detonate the nuke!");
+        logger.fatal("Oh no, fatal error occurred, C:/Windows/System32 was deleted UwU~");
         System.exit(-404);
     }
 
