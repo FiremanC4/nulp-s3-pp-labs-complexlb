@@ -1,36 +1,26 @@
 package Company;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
 public class MobileCompany {
     ArrayList<Tariff> tariffs;
-    private static final Logger logger = LogManager.getLogger(MobileCompany.class);
-
 
     public MobileCompany(ArrayList<Tariff> tariffs) {
         this.tariffs = tariffs;
-        logger.debug("initialized MobileCompany with tariffs:\n{}", getAllTariffs());
     }
 
     public MobileCompany() {
         this.tariffs = new ArrayList<Tariff>();
-        logger.debug("initialized MobileCompany with no tariffs");
     }
 
     public boolean deleteTariff(String name) {
-        logger.debug("Trying to delete tariff \"{}\"", name);
         return tariffs.removeIf(tariff -> tariff.getName().equals(name));
     }
 
     public boolean addTariff(Tariff tariff) {
-        logger.debug("Trying to add tariff: {}", tariff);
         for(Tariff tariff1: tariffs)
             if (tariff1.getName().equals(tariff.getName())) {
-                logger.debug("Failed to add tariff. Tariff with same name exist: {}", tariff.getName());
                 return false;
             }
         return tariffs.add(tariff);
@@ -68,12 +58,6 @@ public class MobileCompany {
             int   minSms       , int   maxSms       ,
             float minInternetGB, float maxInternetGB
             ) {
-        logger.debug("Starting filtering with provided parameters: {} {}, {} {}, {} {}, {} {}",
-                minMonthlyFee, maxMonthlyFee,
-                minMinutes   , maxMinutes   ,
-                minSms       , maxSms       ,
-                minInternetGB, maxInternetGB
-                );
         ArrayList<Tariff> filteredTariffs = new ArrayList<Tariff>();
         if (
              minMonthlyFee == -1 && maxMonthlyFee == -1

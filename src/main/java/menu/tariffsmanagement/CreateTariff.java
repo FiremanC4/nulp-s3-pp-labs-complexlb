@@ -3,13 +3,10 @@ package menu.tariffsmanagement;
 import Company.MobileCompany;
 import Company.Tariff;
 import menu.MenuItem;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
 public class CreateTariff implements MenuItem {
-    private static final Logger logger = LogManager.getLogger(CreateTariff.class);
 
     Scanner scan;
     MobileCompany company;
@@ -20,7 +17,6 @@ public class CreateTariff implements MenuItem {
 
     @Override
     public void execute() {
-        logger.debug("Started to creating tariff");
         System.out.println("Створення нового тарифу");
         System.out.println("Назва тарифу:");
         String name = scan.nextLine();
@@ -43,11 +39,9 @@ public class CreateTariff implements MenuItem {
         Tariff newTariff = new Tariff(name, monthlyFee, minutes, sms, clientsCount, internetGB);
 
         if (company.addTariff(newTariff)) {
-            logger.info("added new tariff: {}", newTariff);
             System.out.println("Новий тариф успішно додано:");
             System.out.println(newTariff);
         } else {
-            logger.error("Failed to added new tariff: {}", newTariff);
             System.out.println("Не вдалося додати тариф.");
         }
     }
