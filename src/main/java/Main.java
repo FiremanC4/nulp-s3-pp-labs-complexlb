@@ -47,9 +47,7 @@ class Main {
                     command.execute();
                     continue;
                 }
-            } catch (NumberFormatException e) {
-            } catch (Exception e) {
-            }
+            } catch (NumberFormatException _) {}
             System.out.println("Неправильний формат!");
 
         }
